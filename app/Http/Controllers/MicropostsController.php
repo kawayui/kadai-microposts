@@ -24,9 +24,13 @@ class MicropostsController extends Controller
                 'user' => $user,
                 'microposts' => $microposts,
             ];
+            $data += $this->counts($user);
+            return view('users.show', $data);
         }
-        return view('welcome', $data);
+        else {
+            return view('welcome');
     }
+}
     public function store(Request $request)
     {
         $this->validate($request, [
